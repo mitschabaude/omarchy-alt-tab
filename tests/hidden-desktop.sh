@@ -35,7 +35,7 @@ start() {
   fi
   mkdir -p "$state/shell" "$state/config/omarchy"
   # TEST-A stands in for the main monitor, set as a user would.
-  echo '{ "plugins": [{ "id": "alt-tab", "monitor": "TEST-A" }] }' > "$state/config/omarchy/shell.json"
+  echo '{ "plugins": [{ "id": "mitschabaude.alt-tab", "monitor": "TEST-A" }] }' > "$state/config/omarchy/shell.json"
 
   # The plugin's qs.Commons imports resolve against this config root.
   ln -sfn "$omarchy/shell/Commons" "$state/shell/Commons"

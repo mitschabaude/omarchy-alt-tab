@@ -24,7 +24,8 @@ Every window is listed: on other workspaces and monitors, in the scratchpad
 workspace in front). Dialogs are left out; they come up with their window.
 
 Made for Omarchy 4 (its Quickshell shell and Hyprland's Lua config); tested
-with Omarchy 4.0.0.alpha, Hyprland 0.57.1 and Quickshell 0.3.2.
+with Omarchy 4.0.0.alpha, Hyprland 0.57.1 and Quickshell 0.3.2. It needs
+nothing beyond Omarchy itself; only the tests need a few tools (see Testing).
 
 ## Install
 
@@ -39,14 +40,14 @@ with Omarchy 4.0.0.alpha, Hyprland 0.57.1 and Quickshell 0.3.2.
    Omarchy's own bindings:
 
    ```lua
-   dofile(os.getenv("HOME") .. "/.config/omarchy/plugins/alt-tab/bindings.lua")
+   dofile(os.getenv("HOME") .. "/.config/omarchy/plugins/mitschabaude.alt-tab/bindings.lua")
    ```
 
    It replaces Omarchy's Alt+Tab and Shift+Alt+Tab bindings, and binds
    letting go of left Alt. Hyprland reloads the config when you save it.
 
-Update with `omarchy plugin update alt-tab`. To remove it, delete the
-`dofile` line first, then run `omarchy plugin remove alt-tab`.
+Update with `omarchy plugin update mitschabaude.alt-tab`. To remove it, delete
+the `dofile` line first, then run `omarchy plugin remove mitschabaude.alt-tab`.
 
 ## Settings
 
@@ -56,7 +57,7 @@ To always show it on one monitor instead, give the plugin's entry in
 
 ```json
 "plugins": [
-  { "id": "alt-tab", "monitor": "DP-1" }
+  { "id": "mitschabaude.alt-tab", "monitor": "DP-1" }
 ]
 ```
 

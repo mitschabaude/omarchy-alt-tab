@@ -1,7 +1,7 @@
--- Key bindings for the alt-tab plugin. Load this file from your Hyprland
+-- Key bindings for the Alt+Tab plugin. Load this file from your Hyprland
 -- config (~/.config/hypr/hyprland.lua):
 --
---   dofile(os.getenv("HOME") .. "/.config/omarchy/plugins/alt-tab/bindings.lua")
+--   dofile(os.getenv("HOME") .. "/.config/omarchy/plugins/mitschabaude.alt-tab/bindings.lua")
 --
 -- Holding Alt keeps the switcher open; each Tab (or Shift+Tab) moves the
 -- selection. Letting go of Alt focuses the selected window. The keys reach

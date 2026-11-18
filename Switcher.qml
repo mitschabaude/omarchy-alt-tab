@@ -43,8 +43,8 @@ Item {
   property string settling: ""
 
   // This plugin's entry in the plugins list of Omarchy's shell.json, e.g.
-  // { "id": "alt-tab", "monitor": "DP-1" }.
-  readonly property string pluginId: root.manifest && root.manifest.id ? String(root.manifest.id) : "alt-tab"
+  // { "id": "mitschabaude.alt-tab", "monitor": "DP-1" }.
+  readonly property string pluginId: root.manifest && root.manifest.id ? String(root.manifest.id) : "mitschabaude.alt-tab"
   property var settings: ({})
 
   FileView {

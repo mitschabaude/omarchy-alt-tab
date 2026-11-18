@@ -5,6 +5,8 @@ Omarchy shell plugin. Omarchy's default Alt+Tab focuses and raises the next
 window on the current workspace with each press, with no preview and no "most
 recent first". This one shows a panel instead:
 
+![Holding Alt and pressing Tab cycles through a panel of window previews](docs/alt-tab.gif)
+
 - Hold Alt and press Tab: a panel shows a preview of every window, most
   recently used first, with the previous window selected. A quick Alt+Tab
   switches back and forth between two windows without the panel ever showing

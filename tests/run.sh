@@ -110,8 +110,25 @@ switch 1 --hold 0
 switch 1 --hold 0
 check "Two quick Alt+Tabs come back to the start" "$before" "$(focused)"
 
+# A window's app id is up to the app. One naming a file that blocks when opened
+# (here a FIFO nobody writes to) must not stall the switcher drawing its icon.
+fifo=$(mktemp -u /tmp/alt-tab-fifo.XXXXXX)
+mkfifo "$fifo"
+trap '[[ ${KEEP:-} ]] || "$desktop" stop >/dev/null; timeout 1 sh -c "echo > $fifo"; rm -f "$fifo"' EXIT
+d hyprctl dispatch "hl.dsp.exec_cmd(\"foot --app-id $fifo --title six -e sh -c 'sleep 3600'\", { workspace = \"3\" })" >/dev/null
+for _ in $(seq 50); do
+  d hyprctl clients -j | jq -e 'any(.title == "six")' >/dev/null && break
+  sleep 0.1
+done
+d hyprctl dispatch 'hl.dsp.global("alt-tab:next")' >/dev/null
+sleep 0.5
+check "A window whose app id names a blocking file doesn't stall the switcher" yes \
+  "$(timeout 3 "$desktop" query order >/dev/null && echo yes || echo no)"
+d wtype -k Escape
+sleep 0.3
+
 check "The desktop in use kept its focused window" "$host_focus" "$(host_focused)"
-check "  and the test desktop's window never had the focus" "" "$(hyprctl clients -j | jq -r '.[] | select(.workspace.name == "special:switcher-test" and .focusHistoryID == 0) | .class')"
+check "  and the test desktop's window never had the focus" "" "$(hyprctl clients -j | jq -r '.[] | select(.workspace.name == "special:alt-tab-test" and .focusHistoryID == 0) | .class')"
 
 echo "screenshot: $shots/panel.png"
 exit $failed

@@ -135,7 +135,7 @@ PanelWindow {
 
           readonly property bool selected: index === window.switcher.index
           readonly property var entry: DesktopEntries.heuristicLookup(modelData.appId)
-          readonly property string iconName: entry && entry.icon ? entry.icon : modelData.appId
+          readonly property string iconName: entry && entry.icon ? entry.icon : Model.iconNameForAppId(modelData.appId)
 
           width: Math.round(window.itemWidth * window.scale)
           height: Math.round(window.itemHeight * window.scale)

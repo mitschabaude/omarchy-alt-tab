@@ -92,6 +92,10 @@ panel shows on yours. The switcher picks up changes to the file right away.
   (works however Alt was pressed) and by the panel itself, for either Alt.
   Either commits; the second does nothing. Right Alt has no binding, so it
   stays free for other uses.
+- **Icons.** A window's icon comes from its desktop entry. Without one, its
+  app id is used as an icon name, but only if it can be one (no slashes or
+  colons): the id is whatever the app chose, and Qt would read a path as a
+  file, which could block (a FIFO, say) and stall the shell.
 - **Focusing** is one Lua dispatch: focus and raise, with cursor warps turned
   off for the switch and restored after.
 

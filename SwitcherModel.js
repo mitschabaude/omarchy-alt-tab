@@ -50,3 +50,13 @@ function fitScale(count, cardWidth, cardHeight, maxWidth, maxHeight) {
   }
   return 0.2
 }
+
+// The icon for a window with no desktop entry: its app id, if that can only be
+// an icon name. The id is whatever the app chose, and Qt reads a path or URL
+// as a file, which could be one that blocks when opened (a FIFO, a device).
+// Icon names have no slashes or colons; anything else gets the generic icon.
+function iconNameForAppId(appId) {
+  var id = String(appId || "")
+  if (id.length === 0 || /[\/:]/.test(id)) return "application-x-executable"
+  return id
+}
